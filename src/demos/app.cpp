@@ -10,7 +10,11 @@
  * software licence.
  */
 #include <cstring>
+#if defined(_MSC_VER)
 #include <gl/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
 #include "app.h"
 #include "timing.h"
 
@@ -166,7 +170,7 @@ void MassAggregateApplication::display()
         p++)
     {
         cyclone::Particle *particle = *p;
-        cyclone::Vector3 &pos = particle->getPosition();
+        cyclone::Vector3 pos = particle->getPosition();
         glPushMatrix();
         glTranslatef(pos.x, pos.y, pos.z);
         glutSolidSphere(0.1f, 20, 10);

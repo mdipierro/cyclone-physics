@@ -286,7 +286,7 @@ static inline real penetrationOnAxis(
 static inline bool tryAxis(
     const CollisionBox &one,
     const CollisionBox &two,
-    Vector3& axis,
+    Vector3 axis,
     const Vector3& toCentre,
     unsigned index,
 

@@ -14,6 +14,18 @@
 #include <ctime>
 #include <cyclone/random.h>
 
+/* HACK TO MAKE IT COMPILE ON NON-WINDOWS */
+#ifdef _MSC_VER
+#pragma intrinsic           (_lrotr, _lrotl)
+#else /* GCC or CC */
+    #define __int64             long long
+    #define __forceinline       __inline__
+#define _lrotr(x, n)        ((((unsigned long)(x)) >> ((int) ((n) & 31))) | (((unsigned long)(x)) << ((int) ((-(n)) & 31))))
+#define _lrotl(x, n)        ((((unsigned long)(x)) << ((int) ((n) & 31))) | (((unsigned long)(x)) >> ((int) ((-(n)) & 31))))
+#endif
+/* END HACK */
+
+
 using namespace cyclone;
 
 Random::Random()

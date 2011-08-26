@@ -10,7 +10,11 @@
  * software licence.
  */
 
+#if defined(_MSC_VER)
 #include <gl/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
 #include <cyclone/cyclone.h>
 #include "../app.h"
 #include "../timing.h"

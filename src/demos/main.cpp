@@ -10,7 +10,11 @@
  * software licence.
  */
 
+#if defined(_MSC_VER)
 #include <gl/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
 
 // Include the general application structure.
 #include "app.h"
@@ -100,7 +104,7 @@ void motion(int x, int y)
 /**
  * The main entry point. We pass arguments onto GLUT.
  */
-void main(int argc, char** argv)
+int main(int argc, char** argv)
 {
     // Set up GLUT and the timers
     glutInit(&argc, argv);
@@ -126,4 +130,5 @@ void main(int argc, char** argv)
     app->deinit();
     delete app;
     TimingData::deinit();
+    return 0;
 }

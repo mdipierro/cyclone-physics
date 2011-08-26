@@ -13,8 +13,24 @@
 #include "timing.h"
 
 // Import the high performance timer (c. 4ms).
+#ifdef _MSC_VER
 #include <windows.h>
 #include <mmsystem.h>
+#else
+#include <sys/time.h>
+#define LONGLONG long long int
+LONGLONG timeGetTime() {
+  /*
+    struct timeval t;
+    LONGLONG seconds, useconds;    
+    gettimeofday(&t, NULL);
+    seconds  = t.tv_sec;
+    useconds = t.tv_usec;
+    return seconds+(int)useconds/1000;
+  */
+  return clock()*1000.0/CLOCKS_PER_SEC;
+}
+#endif
 
 // Hold internal timing data for the performance counter.
 static bool qpcFlag;
@@ -23,6 +39,7 @@ static double qpcFrequency;
 // Internal time and clock access functions
 unsigned systemTime()
 {
+#ifdef _MSC_VER
     if(qpcFlag)
     {
         static LONGLONG qpcMillisPerTick;
@@ -33,6 +50,9 @@ unsigned systemTime()
     {
         return unsigned(timeGetTime());
     }
+#else
+    return unsigned(timeGetTime());
+#endif
 }
 
 unsigned TimingData::getTime()
@@ -56,9 +76,11 @@ unsigned long TimingData::getClock()
 void initTime()
 {
     LONGLONG time;
-
+#ifdef _MSC_VER
     qpcFlag = (QueryPerformanceFrequency((LARGE_INTEGER*)&time) > 0);
-
+#else:
+    qpcFlag = false;
+#endif
     // Check if we have access to the performance counter at this
     // resolution.
     if (qpcFlag) qpcFrequency = 1000.0 / time;
@@ -146,3 +168,4 @@ void TimingData::deinit()
         delete timingData;
         timingData = NULL;
 }
+
