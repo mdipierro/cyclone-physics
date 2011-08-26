@@ -1,0 +1,9 @@
+based on cyclone created by Ian Millington, modifed by Massimo Di Pierro to run no Mac
+
+On Mac
+
+git clone git://github.com/mdipierro/cyclone-physics.git
+cd cyclone-physics
+make
+
+then find the compiled examples (demos/*/*.cpp) in bin/*.out
