@@ -48,7 +48,7 @@
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				DebugInformationFormat="4"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -61,7 +61,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="cyclone.lib opengl32.lib glu32.lib glut32.lib winmm.lib"
+				AdditionalDependencies="cyclone_d.lib opengl32.lib glu32.lib glut32.lib winmm.lib"
 				OutputFile="$(OutDir)/flightsim_d.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../lib"
@@ -139,7 +139,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="cyclone_d.lib opengl32.lib glu32.lib glut32.lib winmm.lib"
+				AdditionalDependencies="cyclone.lib opengl32.lib glu32.lib glut32.lib winmm.lib"
 				OutputFile="$(OutDir)/flightsim.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="../lib"

@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="demo_platform"
 	ProjectGUID="{9AACE042-C173-442F-AEA6-9809DE49ECC3}"
+	RootNamespace="demo_platform"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
