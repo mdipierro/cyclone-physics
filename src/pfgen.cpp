@@ -80,7 +80,7 @@ void ParticleSpring::updateForce(Particle* particle, real duration)
 
     // Calculate the magnitude of the force
     real magnitude = force.magnitude();
-    magnitude = real_abs(magnitude - restLength);
+    magnitude = magnitude - restLength;
     magnitude *= springConstant;
 
     // Calculate the final force and apply it
